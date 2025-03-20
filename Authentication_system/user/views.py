@@ -35,3 +35,12 @@ def user_login(request):
         form = AuthenticationForm()
 
     return render(request,'login.html',{'form':form})
+
+
+def user_profile(request):
+    user_name = request.user.username
+    return render(request,'profile.html' , {'username': user_name})
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
