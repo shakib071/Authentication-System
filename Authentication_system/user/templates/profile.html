@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 
 {% block main_content %}
+    {% if messages %}
+    {% for m in messages %}
+    <p class="bg-success p-3 text-white">{{m}}</p>
+    {% endfor %}
+    {% endif %}
 
+    
     <h1>Profile page</h1>
     <h1>Welcome {{username}}</h1>
 

@@ -12,8 +12,8 @@ def user_signUp(request):
             form = UserRegistrationForm(request.POST)
             if form.is_valid():
                 form.save()
-                messages.success(request,"SignUp Successful")
-                return redirect('homepage')
+                messages.success(request,"SignUp Successfully done")
+                return redirect('login')
         else:
             form = UserRegistrationForm()
                 
@@ -35,7 +35,7 @@ def user_login(request):
                 if user is not None:
                     login(request, user)
                     messages.success(request,"Logged in Successfully")
-                    return redirect('homepage')
+                    return redirect('profile')
         else:
             form = AuthenticationForm()
 
@@ -55,7 +55,8 @@ def user_profile(request):
 def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
-        return redirect('login')
+        messages.success(request,"Logged Out Successfully")
+        return redirect('homepage')
     else:
         return redirect('profile')
 
